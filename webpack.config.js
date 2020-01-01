@@ -7,12 +7,12 @@ module.exports = {
 
     resolve: {
         extensions: [".ts", ".tsx", ".js"],
-        alias: { 'react-dom': '@hot-loader/react-dom'  },
+        alias: { 'react-dom': '@hot-loader/react-dom' },
     },
 
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: 'bundle.min.js'
+        filename: 'bundle.min.js',
     },
 
     module: {
@@ -22,22 +22,25 @@ module.exports = {
                 exclude: /node_modules/,
                 use: [
                     {
-                        loader: 'awesome-typescript-loader'
+                        loader: 'awesome-typescript-loader',
                     }
                 ]
             },
             {
                 enforce: "pre",
                 test: /\.js$/,
-                loader: "source-map-loader"
+                loader: "source-map-loader",
             },
-            { test: /\.html$/, use: 'html-loader' },
-        ]
+            {
+                test: /\.html$/,
+                use: 'html-loader',
+            },
+        ],
     },
 
     plugins: [
         new HtmlWebpackPlugin({
             template: 'src/index.html',
         }),
-    ]
+    ],
 };

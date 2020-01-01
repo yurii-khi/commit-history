@@ -14,6 +14,11 @@ App, that shows git commit history of itself.
 - [x] [React Hot Loader](https://github.com/gaearon/react-hot-loader)
 - [x] [HTML Webpack Plugin](https://github.com/ampedandwired/html-webpack-plugin)
 
+
+### Linting
+- [x] [TSLint](https://palantir.github.io/tslint/)
+- [x] [TSLint Config Airbnb](https://www.npmjs.com/package/tslint-config-airbnb)
+
 ## Installation
 
 ```
