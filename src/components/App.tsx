@@ -1,13 +1,15 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import api from '../api/api';
-import { ICommitSummary } from '../api/types';
+import { ICommitSummary, IGetRepoResponse } from '../api/types';
+import { defaultAppName } from '../constants';
 import Header from './Header';
 import List from './List';
 
 import s from './App.css';
 
 interface IAppState {
+    repo: IGetRepoResponse;
     commits: ICommitSummary[];
     isListFetching: boolean;
     isListFetchingError: boolean;
@@ -22,19 +24,21 @@ class App extends React.PureComponent<{}, IAppState> {
             commits: [],
             isListFetching: false,
             isListFetchingError: false,
+            repo: {} as IGetRepoResponse,
         };
 
         this.handleListReloadClick = this.handleListReloadClick.bind(this);
     }
 
     public componentDidMount(): void {
+        this.getRepoDetails();
         this.getList();
     }
 
     public render() {
         return (
             <div className={s.wrap}>
-                <Header title={'Commit History'}/>
+                <Header repo={this.state.repo}/>
                 <List
                     commits={this.state.commits}
                     isFetching={this.state.isListFetching}
@@ -48,6 +52,23 @@ class App extends React.PureComponent<{}, IAppState> {
 
     private handleListReloadClick() {
         this.getList();
+    }
+
+    private getRepoDetails() {
+        api.getRepo()
+            .then((res) => {
+                this.setState({
+                    repo: { ...res.data },
+                });
+            })
+            .catch(() => {
+                this.setState({
+                    repo: {
+                        ...this.state.repo,
+                        name: defaultAppName,
+                    },
+                });
+            });
     }
 
     private getList(): void {

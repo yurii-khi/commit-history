@@ -1,3 +1,10 @@
+export interface IGetRepoResponse {
+    name: string;
+    full_name: string;
+    description: string;
+    html_url: string;
+}
+
 export type TGetListResponse = ICommitSummary[];
 
 export interface ICommitSummary {

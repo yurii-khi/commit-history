@@ -1,5 +1,5 @@
 # commit-history
-App, that shows git commit history of itself.
+The App, that shows git commit history for itself
 
 ## Contains
 

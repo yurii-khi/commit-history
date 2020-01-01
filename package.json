@@ -1,7 +1,7 @@
 {
   "name": "commit-history",
   "version": "1.0.0",
-  "description": "App, that shows git commit history of itself.",
+  "description": "The App, that shows git commit history for itself",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --hot --color --port 3000",
