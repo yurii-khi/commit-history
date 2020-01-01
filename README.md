@@ -14,6 +14,10 @@ App, that shows git commit history of itself.
 - [x] [Awesome TypeScript loader](https://github.com/s-panferov/awesome-typescript-loader)
 - [x] [React Hot Loader](https://github.com/gaearon/react-hot-loader)
 - [x] [HTML Webpack Plugin](https://github.com/ampedandwired/html-webpack-plugin)
+- [x] [Style Loader](https://github.com/webpack-contrib/style-loader)
+- [x] [CSS Loader](https://github.com/webpack-contrib/css-loader)
+- [x] [Sass Loader](https://github.com/webpack-contrib/sass-loader)
+- [x] [PostCSS Loader](https://github.com/postcss/postcss-loader)
 
 
 ### Linting

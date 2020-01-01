@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -35,6 +36,40 @@ module.exports = {
                 test: /\.html$/,
                 use: 'html-loader',
             },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                localIdentName: '[local]__[hash:base64:5]',
+                            },
+                            sourceMap: true,
+                            importLoaders: 1,
+                        }
+                    },
+                    {
+                        loader: 'sass-loader',
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: [
+                                require('postcss-import')({addDependencyTo: webpack}),
+                                require('postcss-url')(),
+                                require('postcss-preset-env')({
+                                    stage: 2
+                                }),
+                                require('postcss-reporter')(),
+                                require('postcss-browser-reporter')()
+                            ]
+                        }
+                    }
+                ]
+            }
         ],
     },
 
