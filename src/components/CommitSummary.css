@@ -12,6 +12,10 @@
         background-color: #f6fbff;
     }
 
+    .details {
+        margin-right: 8px;
+    }
+
     .message {
         margin-bottom: 8px;
         color: black;
@@ -20,13 +24,19 @@
     .author {
         font-size: 12px;
         color: darkgray;
+
+        .email {
+            color: darkblue;
+            text-decoration: none;
+        }
     }
 
     .link {
         margin: 0 8px 0 auto;
         padding: 4px 8px;
         cursor: pointer;
-        max-width: 10%;
+        width: 80px;
+        max-width: 20%;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
