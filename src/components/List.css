@@ -2,6 +2,17 @@
     position: relative;
     min-height: 80px;
 
+    .reloadLink {
+        padding: 8px;
+        text-align: right;
+
+        .link {
+            font-size: 13px;
+            color: blue;
+            cursor: pointer;
+        }
+    }
+
     &.fetching {
         opacity: 0.4;
         pointer-events: none;

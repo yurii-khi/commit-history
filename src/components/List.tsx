@@ -11,6 +11,8 @@ interface IListProps {
     isFetching: boolean;
     isFetchingError: boolean;
     errorMessage?: string;
+
+    onReloadClick(): void;
 }
 
 const List: React.FC<IListProps> = (props) => {
@@ -31,8 +33,15 @@ const List: React.FC<IListProps> = (props) => {
 
     const isFetchingClass = props.isFetching ? s.fetching : '';
 
+    const reloadLink = (
+        <div className={s.reloadLink}>
+            <span className={s.link} onClick={props.onReloadClick}>Reload</span>
+        </div>
+    );
+
     return (
         <div className={classNames(s.wrap, isFetchingClass)}>
+            {reloadLink}
             {!props.isFetchingError ? items : errorMessage}
         </div>
     );

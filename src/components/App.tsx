@@ -23,6 +23,8 @@ class App extends React.PureComponent<{}, IAppState> {
             isListFetching: false,
             isListFetchingError: false,
         };
+
+        this.handleListReloadClick = this.handleListReloadClick.bind(this);
     }
 
     public componentDidMount(): void {
@@ -38,9 +40,14 @@ class App extends React.PureComponent<{}, IAppState> {
                     isFetching={this.state.isListFetching}
                     isFetchingError={this.state.isListFetchingError}
                     errorMessage={this.state.listFetchingErrorMessage}
+                    onReloadClick={this.handleListReloadClick}
                 />
             </div>
         );
+    }
+
+    private handleListReloadClick() {
+        this.getList();
     }
 
     private getList(): void {
