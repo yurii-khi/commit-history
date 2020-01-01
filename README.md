@@ -5,6 +5,7 @@ App, that shows git commit history of itself.
 
 - [x] [Typescript](https://www.typescriptlang.org/) 3
 - [x] [React](https://facebook.github.io/react/) 16.12
+- [x] [Axios HTTP client](https://github.com/axios/axios)
 
 ### Build tools
 
