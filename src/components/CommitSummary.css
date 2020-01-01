@@ -1,0 +1,46 @@
+.wrap {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #e1e4e8;
+
+    &:not(:last-child) {
+        border-bottom: none;
+    }
+
+    &:hover {
+        background-color: #f6fbff;
+    }
+
+    .message {
+        margin-bottom: 8px;
+        color: black;
+    }
+
+    .author {
+        font-size: 12px;
+        color: darkgray;
+    }
+
+    .link {
+        margin: 0 8px 0 auto;
+        padding: 4px 8px;
+        cursor: pointer;
+        max-width: 10%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 11px;
+        font-weight: bold;
+        color: blue;
+        text-decoration: none;
+        border-radius: 3px;
+        border: 1px solid #e1e4e8;
+
+        &:hover {
+            color: white;
+            border-color: blue;
+            background-color: blue;
+        }
+    }
+}
