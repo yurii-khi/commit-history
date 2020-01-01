@@ -2,7 +2,10 @@ import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import api from '../api/api';
 import { ICommitSummary } from '../api/types';
+import Header from './Header';
 import List from './List';
+
+import s from './App.css';
 
 interface IAppState {
     commits: ICommitSummary[];
@@ -28,7 +31,8 @@ class App extends React.PureComponent<{}, IAppState> {
 
     public render() {
         return (
-            <div>
+            <div className={s.wrap}>
+                <Header title={'Commit History'}/>
                 <List commits={this.state.commits}/>
             </div>
         );

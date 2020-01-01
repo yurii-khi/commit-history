@@ -1,0 +1,18 @@
+:global(body) {
+    font-size: 14px;
+    color: #333;
+    font-family: Arial, serif;
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+}
+
+.wrap {
+    width: 800px;
+    max-width: 100%;
+    padding: 0 8px;
+    margin: 0 auto;
+}
