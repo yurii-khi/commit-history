@@ -33,7 +33,12 @@ class App extends React.PureComponent<{}, IAppState> {
         return (
             <div className={s.wrap}>
                 <Header title={'Commit History'}/>
-                <List commits={this.state.commits}/>
+                <List
+                    commits={this.state.commits}
+                    isFetching={this.state.isListFetching}
+                    isFetchingError={this.state.isListFetchingError}
+                    errorMessage={this.state.listFetchingErrorMessage}
+                />
             </div>
         );
     }

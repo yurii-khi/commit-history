@@ -1,0 +1,36 @@
+.wrap {
+    position: relative;
+    min-height: 80px;
+
+    &.fetching {
+        opacity: 0.4;
+        pointer-events: none;
+
+        &::after {
+            content: '\f110';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            font-family: "FontAwesome";
+            color: black;
+            font-size: 30px;
+            transform: translate(-50%, -50%);
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+    }
+
+    .error {
+        display: flex;
+        height: 80px;
+        padding: 8px;
+        color: red;
+        align-items: center;
+        justify-content: center;
+    }
+}
