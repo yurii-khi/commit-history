@@ -1,47 +1,63 @@
-import axios from 'axios';
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
+import api from '../api/api';
+import { ICommitSummary } from '../api/types';
+import List from './List';
 
-enum urls {
-    COMMITS = 'https://api.github.com/repos/khiznichenko/commit-history/commits',
+interface IAppState {
+    commits: ICommitSummary[];
+    isListFetching: boolean;
+    isListFetchingError: boolean;
+    listFetchingErrorMessage?: string;
 }
 
-class App extends React.PureComponent<{}, any> {
+class App extends React.PureComponent<{}, IAppState> {
     constructor(props: {}) {
         super(props);
 
         this.state = {
             commits: [],
+            isListFetching: false,
+            isListFetchingError: false,
         };
     }
 
     public componentDidMount(): void {
-        axios({
-            headers: {
-                Accept: 'application/vnd.github.v3+json',
-            },
-            method: 'get',
-            url: urls.COMMITS,
-        })
-            .then((res) => {
-                this.setState({
-                    commits: res.data,
-                });
-            });
+        this.getList();
     }
 
     public render() {
         return (
             <div>
-                {this.state.commits.map((commit: any) => this.renderCommit(commit))}
+                <List commits={this.state.commits}/>
             </div>
         );
     }
 
-    private renderCommit(commit: any) {
-        return (
-            <p key={commit.sha}>{commit.commit.message}</p>
-        );
+    private getList(): void {
+        this.setState({
+            isListFetching: true,
+            isListFetchingError: false,
+        });
+
+        api.getList()
+            .then((res) => {
+                this.setState({
+                    isListFetching: false,
+                    isListFetchingError: false,
+                });
+
+                this.setState({
+                    commits: res.data,
+                });
+            })
+            .catch((err) => {
+                this.setState({
+                    isListFetching: false,
+                    isListFetchingError: true,
+                    listFetchingErrorMessage: err.message,
+                });
+            });
     }
 }
 
