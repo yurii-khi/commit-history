@@ -28,7 +28,7 @@ The App, that shows git commit history for itself
 ## Installation
 
 ```
-$ npm ci
+$ npm i
 ```
 
 ## Running
